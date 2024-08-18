@@ -21,7 +21,7 @@ public class ChampionServiceImpl extends ServiceImpl<ChampionMapper, ChampionEnt
 
 	private static final String TOPIC = "test_topic";
 	//引入mq的模板服务
-	private final RocketMQTemplate rocketMQTemplate;
+	//private final RocketMQTemplate rocketMQTemplate;
 
 	private final ObjectMapper om;
 
@@ -29,11 +29,7 @@ public class ChampionServiceImpl extends ServiceImpl<ChampionMapper, ChampionEnt
 	@SneakyThrows
 	public void send(Long id) {
 		ChampionEntity champion = getById(id);
-		rocketMQTemplate.convertAndSend(TOPIC, //主题
-				om.writeValueAsString(champion) // 发送的消息，发送的消息最好是简单精确，如果是JSON格式最佳
-				// 如果要处理幂等之类的问题 需要生成一个唯一key 使用redis或者数据库
-				// 来报保证消息的多次执行，生效一次，或者多次消息只执行一次的模式
-		);
+		//rocketMQTemplate.convertAndSend(TOPIC, om.writeValueAsString(champion));
 	}
 
 }
