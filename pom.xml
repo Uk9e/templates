@@ -21,6 +21,7 @@
         <module>admin</module>
         <module>mproot</module>
         <module>common</module>
+        <module>oss</module>
     </modules>
 
     <properties>
